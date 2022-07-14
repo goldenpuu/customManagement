@@ -77,12 +77,4 @@ CustomDAO dao = new CustomDAO();
 <%
 	}
 %>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#back').on("click", function(){
-			location.href = "detail.jsp?busi_num="+<%=busi_num%>;
-		});
-	});
-</script>
-<button type="button" id="back">돌아가기</button>
+<button type="button" onclick="location.href='index.jsp?busi_num=&custom='">돌아가기</button>

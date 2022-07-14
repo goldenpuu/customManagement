@@ -3,6 +3,9 @@
 <%@ page import="custom.*"%>
 <%@ page import="java.util.*"%>
 <%
+if (request.getParameter("busi_num") == null) {
+	response.sendRedirect("index.jsp?busi_num=&custom=");
+}
 request.setCharacterEncoding("utf-8");
 
 CustomDAO dao = new CustomDAO();
@@ -18,11 +21,16 @@ dao.close();
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('#search').on("click", function(){
-			location.href = "index.jsp?busi_num="+$('#bn').val()+"&custom="+$('#cu').val();
-		});
-	});
+	$(document).ready(
+			function() {
+				$('#search').on(
+						"click",
+						function() {
+							location.href = "index.jsp?busi_num="
+									+ $('#bn').val() + "&custom="
+									+ $('#cu').val();
+						});
+			});
 </script>
 </head>
 <body>
@@ -47,8 +55,7 @@ dao.close();
 			CustomVO customVo = customList.get(i);
 		%>
 		<tr>
-			<td><a
-				href="detail.jsp?busi_num=<%=customVo.getBusi_num()%>"><%=customVo.getBusi_num()%></a></td>
+			<td><a href="detail.jsp?busi_num=<%=customVo.getBusi_num()%>"><%=customVo.getBusi_num()%></a></td>
 			<td><%=customVo.getCustom()%></td>
 		</tr>
 		<%
