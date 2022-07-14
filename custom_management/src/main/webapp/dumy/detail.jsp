@@ -6,6 +6,38 @@ request.setCharacterEncoding("utf-8");
 
 CustomDAO dao = new CustomDAO();
 CustomVO vo = dao.selectOne(request.getParameter("busi_num"));
+if(vo == null){
+	vo = new CustomVO();
+	vo.setAccount_num("");
+	vo.setAddr1("");
+	vo.setAddr2("");
+	vo.setBusi_condition("");
+	vo.setBusi_num("");
+	vo.setCeo("");
+	vo.setCharge_person("");
+	vo.setCo_yn("Y");
+	vo.setContract_period_e("");
+	vo.setContract_period_s("");
+	vo.setCountry_eng("");
+	vo.setCountry_kor("");
+	vo.setCustom("");
+	vo.setFactory("");
+	vo.setFax("");
+	vo.setForeign_yn("N");
+	vo.setHomepage("");
+	vo.setItem("");
+	vo.setModi_info_date("");
+	vo.setModi_info_man("");
+	vo.setPost_num("");
+	vo.setRegi_info_date("");
+	vo.setRegi_info_man("");
+	vo.setShort_name("");
+	vo.setSpecial_relation("N");
+	vo.setTax_yn("Y");
+	vo.setTel("");
+	vo.setTrade_bank("");
+	vo.setTrade_stop("N");
+}
 dao.close();
 %>
 <!DOCTYPE html>

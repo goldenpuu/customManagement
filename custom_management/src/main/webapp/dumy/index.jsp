@@ -55,5 +55,6 @@ request.setCharacterEncoding("utf-8");
 		}
 		%>
 	</table>
+	<button type="button" onclick="location.href='detail.jsp'">새로등록</button>
 </body>
 </html>
