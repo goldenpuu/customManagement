@@ -31,6 +31,9 @@ String regi_info_man = request.getParameter("regi_info_man");
 String regi_info_date = request.getParameter("regi_info_date");
 String modi_info_man = request.getParameter("modi_info_man");
 String modi_info_date = request.getParameter("modi_info_date");
+String factory = request.getParameter("factory");
+String trade_bank = request.getParameter("trade_bank");
+String account_num = request.getParameter("account_num");
 
 CustomDAO dao = new CustomDAO();
 if (dao.isDuplicatePk(busi_num)) {
@@ -65,6 +68,9 @@ if (dao.isDuplicatePk(busi_num)) {
 	vo.setRegi_info_date(regi_info_date);
 	vo.setModi_info_man(modi_info_man);
 	vo.setModi_info_date(modi_info_date);
+	vo.setFactory(factory);
+	vo.setTrade_bank(trade_bank);
+	vo.setAccount_num(account_num);
 	int r = dao.insert(vo);
 	if (r > 0) { // 정상등록
 %>

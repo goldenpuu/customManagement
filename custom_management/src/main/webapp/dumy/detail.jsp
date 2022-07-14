@@ -204,11 +204,11 @@ dao.close();
 				<td>ฐ่มยน๘ศฃ</td>
 			</tr>
 			<tr>
-				<td><input type="text" id="factory" readonly
+				<td><input type="text" id="factory" 
 					value='<%=vo.getFactory()%>'></input></td>
-				<td><input type="text" id="trade_bank" readonly
+				<td><input type="text" id="trade_bank" 
 					value='<%=vo.getTrade_bank()%>'></input></td>
-				<td><input type="text" id="account_num" readonly
+				<td><input type="text" id="account_num" 
 					value='<%=vo.getAccount_num()%>'></input></td>
 			</tr>
 		</table>
