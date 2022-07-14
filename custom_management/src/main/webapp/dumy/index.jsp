@@ -3,11 +3,11 @@
 <%@ page import="custom.*"%>
 <%@ page import="java.util.*"%>
 <%
+request.setCharacterEncoding("utf-8");
+
 CustomDAO dao = new CustomDAO();
 List<CustomVO> customList = dao.selectList(request.getParameter("busi_num"), request.getParameter("custom"));
 dao.close();
-
-request.setCharacterEncoding("utf-8");
 %>
 <!DOCTYPE html>
 <html>

@@ -29,6 +29,7 @@ public class CustomDAO {
 
 		int r = 0;
 		try {
+			conn.setAutoCommit(false);
 			stmt = conn.createStatement();
 			String sql = "INSERT INTO custom"
 					+ "	(BUSI_NUM, CUSTOM, SHORT, CEO, CHARGE_PERSON, BUSI_CONDITION, ITEM, POST_NUM, ADDR1, ADDR2, TEL, FAX, HOMEPAGE, CO_YN, FOREIGN_YN, TAX_YN, COUNTRY_ENG, COUNTRY_KOR, SPECIAL_RELATION, TRADE_STOP, CONTRACT_PERIOD_S, CONTRACT_PERIOD_E, REGI_INFO_MAN, REGI_INFO_DATE, MODI_INFO_MAN, MODI_INFO_DATE) "
@@ -45,6 +46,7 @@ public class CustomDAO {
 					+ vo.getBusi_num() + "', '" + vo.getFactory() + "', '" + vo.getTrade_bank() + "', '"
 					+ vo.getAccount_num() + "'); ";
 			r = stmt.executeUpdate(sql); // insert, update, delete -> executeUpdate() 사용
+			conn.commit();
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
@@ -54,6 +56,7 @@ public class CustomDAO {
 	public int update(CustomVO vo) {
 		int r = 0;
 		try {
+			conn.setAutoCommit(false);
 			stmt = conn.createStatement();
 			String sql = "update custom set " + "BUSI_NUM='" + vo.getBusi_num() + "'," + "CUSTOM='" + vo.getCustom()
 					+ "'," + "SHORT='" + vo.getShort_name() + "'," + "CEO='" + vo.getCeo() + "'," + "CHARGE_PERSON='"
@@ -73,6 +76,7 @@ public class CustomDAO {
 					+ "',\r\n" + "		ACCOUNT_NUM='" + vo.getAccount_num() + "'\r\n" + "	WHERE BUSI_NUM='"
 					+ vo.getBusi_num() + "'";
 			r = stmt.executeUpdate(sql); // insert, update, delete -> executeUpdate() 사용
+			conn.commit();
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
@@ -82,11 +86,13 @@ public class CustomDAO {
 	public int delete(String busi_num) {
 		int r = 0;
 		try {
+			conn.setAutoCommit(false);
 			stmt = conn.createStatement();
 			String sql = "delete from custom where BUSI_NUM='" + busi_num + "'";
 			r = stmt.executeUpdate(sql); // insert, update, delete -> executeUpdate() 사용
 			sql = "delete from account where BUSI_NUM='" + busi_num + "'";
 			r = stmt.executeUpdate(sql); // insert, update, delete -> executeUpdate() 사용
+			conn.commit();
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}

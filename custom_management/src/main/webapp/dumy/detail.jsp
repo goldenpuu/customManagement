@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ page import="custom.*"%>
+<%@page import="java.time.LocalDate"%>
 <%
 request.setCharacterEncoding("utf-8");
 
 CustomDAO dao = new CustomDAO();
 CustomVO vo = dao.selectOne(request.getParameter("busi_num"));
-if(vo == null){
+if (vo == null) {
+	LocalDate todaysDate = LocalDate.now();
 	vo = new CustomVO();
 	vo.setAccount_num("");
 	vo.setAddr1("");
@@ -16,8 +18,8 @@ if(vo == null){
 	vo.setCeo("");
 	vo.setCharge_person("");
 	vo.setCo_yn("Y");
-	vo.setContract_period_e("");
-	vo.setContract_period_s("");
+	vo.setContract_period_e(todaysDate.toString());
+	vo.setContract_period_s(todaysDate.toString());
 	vo.setCountry_eng("");
 	vo.setCountry_kor("");
 	vo.setCustom("");
@@ -26,10 +28,10 @@ if(vo == null){
 	vo.setForeign_yn("N");
 	vo.setHomepage("");
 	vo.setItem("");
-	vo.setModi_info_date("");
+	vo.setModi_info_date(todaysDate.toString());
 	vo.setModi_info_man("");
 	vo.setPost_num("");
-	vo.setRegi_info_date("");
+	vo.setRegi_info_date(todaysDate.toString());
 	vo.setRegi_info_man("");
 	vo.setShort_name("");
 	vo.setSpecial_relation("N");
@@ -106,11 +108,15 @@ dao.close();
 		$("#tax_yn").change(function() {
 			tax_yn = $("#tax_yn option:selected").val();
 		});
+		$("#sending").submit(function() {
+			$("input[name=special_relation]").val(special_relation);
+			$("input[name=trade_stop]").val(trade_stop);
+		});
 	});
 </script>
 </head>
 <body>
-	<form method="post">
+	<form method="post" id="sending">
 		<button type="button" id="init">초기화</button>
 		<button type="submit" id="insert"
 			onclick="javascript: form.action='insert.jsp';">등록</button>
@@ -203,29 +209,33 @@ dao.close();
 			</tr>
 			<tr>
 				<td>특수관계자</td>
-				<td><input type="checkbox" name="special_relation" id="special_relation"
-					value="Y" <%if ("Y".equals(vo.getSpecial_relation())) {%> checked
-					<%}%>></td>
+				<td><input type="checkbox" id="special_relation"
+					<%if ("Y".equals(vo.getSpecial_relation())) {%> checked <%}%>>
+					<input type="hidden" name="special_relation"></td>
 				<td>거래중지</td>
-				<td><input type="checkbox" name="trade_stop" id="trade_stop" value="Y"
-					<%if ("Y".equals(vo.getTrade_stop())) {%> checked <%}%>></td>
+				<td><input type="checkbox" id="trade_stop"
+					<%if ("Y".equals(vo.getTrade_stop())) {%> checked <%}%>> <input
+					type="hidden" name="trade_stop"></td>
 			</tr>
 			<tr>
 				<td>계약기간</td>
-				<td><input type="text" name="contract_period_s" id="contract_period_s"
-					value='<%=vo.getContract_period_s()%>'> ~</td>
-				<td><input type="text" name="contract_period_e" id="contract_period_e"
-					value='<%=vo.getContract_period_e()%>'></td>
+				<td><input type="date" name="contract_period_s"
+					id="contract_period_s" value='<%=vo.getContract_period_s()%>'>
+					~</td>
+				<td><input type="date" name="contract_period_e"
+					id="contract_period_e" value='<%=vo.getContract_period_e()%>'></td>
 			</tr>
 			<tr>
 				<td>등록정보</td>
 				<td><input type="text" name="regi_info_man" id="regi_info_man"
-					value='<%=vo.getRegi_info_man()%>'> <input type="text" name="regi_info_date"
-					id="regi_info_date" value='<%=vo.getRegi_info_date()%>'></td>
+					value='<%=vo.getRegi_info_man()%>'> <input type="date"
+					name="regi_info_date" id="regi_info_date"
+					value='<%=vo.getRegi_info_date()%>'></td>
 				<td>변경정보</td>
 				<td><input type="text" name="modi_info_man" id="modi_info_man"
-					value='<%=vo.getModi_info_man()%>'> <input type="text" name="modi_info_date"
-					id="modi_info_date" value='<%=vo.getModi_info_date()%>'></td>
+					value='<%=vo.getModi_info_man()%>'> <input type="date"
+					name="modi_info_date" id="modi_info_date"
+					value='<%=vo.getModi_info_date()%>'></td>
 			</tr>
 			<tr>
 				<td>(거래처 계좌정보)</td>
@@ -236,11 +246,11 @@ dao.close();
 				<td>계좌번호</td>
 			</tr>
 			<tr>
-				<td><input type="text" id="factory" 
+				<td><input type="text" name="factory" id="factory"
 					value='<%=vo.getFactory()%>'></input></td>
-				<td><input type="text" id="trade_bank" 
+				<td><input type="text" name="trade_bank" id="trade_bank"
 					value='<%=vo.getTrade_bank()%>'></input></td>
-				<td><input type="text" id="account_num" 
+				<td><input type="text" name="account_num" id="account_num"
 					value='<%=vo.getAccount_num()%>'></input></td>
 			</tr>
 		</table>
