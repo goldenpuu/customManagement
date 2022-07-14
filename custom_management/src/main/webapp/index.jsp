@@ -135,7 +135,10 @@
 					"regi_info_man" : $("#regi_info_man").val(),
 					"regi_info_date" : $("#regi_info_date").val(),
 					"modi_info_man" : $("#modi_info_man").val(),
-					"modi_info_date" : $("#modi_info_date").val()
+					"modi_info_date" : $("#modi_info_date").val(),
+					"factory" : $("#factory").val(),
+					"trade_bank" : $("#trade_bank").val(),
+					"account_num" : $("#account_num").val()
 				},
 				datatype : "html",
 				contentType : "application/json",
@@ -173,7 +176,10 @@
 					"regi_info_man" : $("#regi_info_man").val(),
 					"regi_info_date" : $("#regi_info_date").val(),
 					"modi_info_man" : $("#modi_info_man").val(),
-					"modi_info_date" : $("#modi_info_date").val()
+					"modi_info_date" : $("#modi_info_date").val(),
+					"factory" : $("#factory").val(),
+					"trade_bank" : $("#trade_bank").val(),
+					"account_num" : $("#account_num").val()
 				},
 				datatype : "html",
 				contentType : "application/json",
@@ -453,9 +459,9 @@ input {
 					<td>계좌번호</td>
 				</tr>
 				<tr>
-					<td><input type="text" id="factory" readonly></input></td>
-					<td><input type="text" id="trade_bank" readonly></input></td>
-					<td><input type="text" id="account_num" readonly></input></td>
+					<td><input type="text" name="factory" id="factory"></input></td>
+					<td><input type="text" name="trade_bank" id="trade_bank"></input></td>
+					<td><input type="text" name="account_num" id="account_num"></input></td>
 				</tr>
 			</table>
 		</div>

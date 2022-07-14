@@ -2,6 +2,8 @@
 	pageEncoding="EUC-KR"%>
 <%@ page import="custom.*"%>
 <%
+request.setCharacterEncoding("utf-8");
+
 CustomDAO dao = new CustomDAO();
 CustomVO vo = dao.selectOne(request.getParameter("busi_num"));
 dao.close();
