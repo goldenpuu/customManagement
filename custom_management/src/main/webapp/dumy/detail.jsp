@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="custom.*"%>
 <%@page import="java.time.LocalDate"%>
 <%
@@ -46,7 +46,7 @@ dao.close();
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>»ó¼¼Á¶È¸</title>
+<title>ìƒì„¸ì¡°íšŒ</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -72,7 +72,7 @@ dao.close();
 		$("#country_search").on(
 				"click",
 				function() {
-					window.open('../countrySearch.jsp', '±¹°¡°Ë»öÃ¢',
+					window.open('../countrySearch.jsp', 'êµ­ê°€ê²€ìƒ‰ì°½',
 							'width=400 height=400');
 				});
 	});
@@ -117,108 +117,111 @@ dao.close();
 </head>
 <body>
 	<form method="post" id="sending">
-		<button type="button" id="init">ÃÊ±âÈ­</button>
+		<button type="button" id="init">ì´ˆê¸°í™”</button>
 		<button type="submit" id="insert"
-			onclick="javascript: form.action='insert.jsp';">µî·Ï</button>
+			onclick="javascript: form.action='insert.jsp';">ë“±ë¡</button>
 		<button type="submit" id="update"
-			onclick="javascript: form.action='update.jsp';">¼öÁ¤</button>
+			onclick="javascript: form.action='update.jsp';">ìˆ˜ì •</button>
 		<button type="submit" id="delete"
-			onclick="javascript: form.action='delete.jsp';">»èÁ¦</button>
+			onclick="javascript: form.action='delete.jsp';">ì‚­ì œ</button>
+		<button type="button"
+			onclick="location.href='index.jsp?busi_num=&custom='">ê²€ìƒ‰</button>
+
 		<table border="1">
 			<tr>
-				<td>»ç¾÷ÀÚ¹øÈ£</td>
+				<td>ì‚¬ì—…ìžë²ˆí˜¸</td>
 				<td><input type="text" name="busi_num" id="busi_num"
 					value='<%=vo.getBusi_num()%>'></td>
-				<td>¾àÄª</td>
+				<td>ì•½ì¹­</td>
 				<td><input type="text" name="short_name" id="short_name"
 					value='<%=vo.getShort_name()%>'></td>
 			</tr>
 			<tr>
-				<td>°Å·¡Ã³¸í</td>
+				<td>ê±°ëž˜ì²˜ëª…</td>
 				<td><input type="text" name="custom" id="custom"
 					value='<%=vo.getCustom()%>'></td>
 			</tr>
 			<tr>
-				<td>´ëÇ¥ÀÚ</td>
+				<td>ëŒ€í‘œìž</td>
 				<td><input type="text" name="ceo" id="ceo"
 					value='<%=vo.getCeo()%>'></td>
-				<td>´ã´çÀÚ</td>
+				<td>ë‹´ë‹¹ìž</td>
 				<td><input type="text" name="charge_person" id="charge_person"
 					value='<%=vo.getCharge_person()%>'></td>
 			</tr>
 			<tr>
-				<td>¾÷ÅÂ</td>
+				<td>ì—…íƒœ</td>
 				<td><input type="text" id="busi_condition"
 					name="busi_condition" value='<%=vo.getBusi_condition()%>'></td>
-				<td>Á¾¸ñ</td>
+				<td>ì¢…ëª©</td>
 				<td><input type="text" name="item" id="item"
 					value='<%=vo.getItem()%>'></td>
 			</tr>
 			<tr>
-				<td>¿ìÆí¹øÈ£</td>
+				<td>ìš°íŽ¸ë²ˆí˜¸</td>
 				<td><input type="text" id="post_num" name="post_num"
 					value='<%=vo.getPost_num()%>'>
-					<button id="post_search">°Ë»ö</button></td>
-				<td>ÁÖ¼Ò1</td>
+					<button id="post_search">ê²€ìƒ‰</button></td>
+				<td>ì£¼ì†Œ1</td>
 				<td><input type="text" name="addr1" id="addr1"
 					value='<%=vo.getAddr1()%>'></td>
 			</tr>
 			<tr>
-				<td>ÁÖ¼Ò2</td>
+				<td>ì£¼ì†Œ2</td>
 				<td><input type="text" name="addr2" id="addr2"
 					value='<%=vo.getAddr2()%>'></td>
 			</tr>
 			<tr>
-				<td>ÀüÈ­¹øÈ£</td>
+				<td>ì „í™”ë²ˆí˜¸</td>
 				<td><input type="text" name="tel" id="tel"
 					value='<%=vo.getTel()%>'></td>
-				<td>ÆÑ½º¹øÈ£</td>
+				<td>íŒ©ìŠ¤ë²ˆí˜¸</td>
 				<td><input type="text" name="fax" id="fax"
 					value='<%=vo.getFax()%>'></td>
 			</tr>
 			<tr>
-				<td>È¨ÆäÀÌÁö</td>
+				<td>í™ˆíŽ˜ì´ì§€</td>
 				<td><input type="text" name="homepage" id="homepage"
 					value='<%=vo.getHomepage()%>'></td>
 			</tr>
 			<tr>
-				<td>¹ýÀÎ¿©ºÎ</td>
+				<td>ë²•ì¸ì—¬ë¶€</td>
 				<td><input type="radio" name="co_yn" id="co_y" value="Y"
-					<%if ("Y".equals(vo.getCo_yn())) {%> checked <%}%>>¹ýÀÎ<br>
+					<%if ("Y".equals(vo.getCo_yn())) {%> checked <%}%>>ë²•ì¸<br>
 					<input type="radio" name="co_yn" id="co_n" value="N"
-					<%if ("N".equals(vo.getCo_yn())) {%> checked <%}%>>°³ÀÎ</td>
-				<td>ÇØ¿Ü¿©ºÎ</td>
+					<%if ("N".equals(vo.getCo_yn())) {%> checked <%}%>>ê°œì¸</td>
+				<td>í•´ì™¸ì—¬ë¶€</td>
 				<td><input type="radio" name="foreign_yn" id="foreign_n"
-					value="N" <%if ("N".equals(vo.getForeign_yn())) {%> checked <%}%>>±¹³»<br>
+					value="N" <%if ("N".equals(vo.getForeign_yn())) {%> checked <%}%>>êµ­ë‚´<br>
 					<input type="radio" name="foreign_yn" id="foreign_y" value="Y"
-					<%if ("Y".equals(vo.getForeign_yn())) {%> checked <%}%>>ÇØ¿Ü</td>
+					<%if ("Y".equals(vo.getForeign_yn())) {%> checked <%}%>>í•´ì™¸</td>
 			</tr>
 			<tr>
-				<td>°ú¼¼±¸ºÐ</td>
+				<td>ê³¼ì„¸êµ¬ë¶„</td>
 				<td><select name="tax_yn" name="tax_yn" id="tax_yn">
 						<option value="Y" class="tax_yn"
-							<%if ("Y".equals(vo.getTax_yn())) {%> selected <%}%>>°ú¼¼</option>
+							<%if ("Y".equals(vo.getTax_yn())) {%> selected <%}%>>ê³¼ì„¸</option>
 						<option value="N" class="tax_yn"
-							<%if ("N".equals(vo.getTax_yn())) {%> selected <%}%>>¸é¼¼</option>
+							<%if ("N".equals(vo.getTax_yn())) {%> selected <%}%>>ë©´ì„¸</option>
 				</select></td>
-				<td>±¹°¡</td>
+				<td>êµ­ê°€</td>
 				<td><input type="text" name="country_eng" id="country_eng"
 					value='<%=vo.getCountry_eng()%>'> <input type="text"
 					name="country_kor" id="country_kor">
-					<button id="country_search" value='<%=vo.getCountry_kor()%>'>°Ë»ö</button></td>
+					<button id="country_search" value='<%=vo.getCountry_kor()%>'>ê²€ìƒ‰</button></td>
 			</tr>
 			<tr>
-				<td>Æ¯¼ö°ü°èÀÚ</td>
+				<td>íŠ¹ìˆ˜ê´€ê³„ìž</td>
 				<td><input type="checkbox" id="special_relation"
 					<%if ("Y".equals(vo.getSpecial_relation())) {%> checked <%}%>>
 					<input type="hidden" name="special_relation"></td>
-				<td>°Å·¡ÁßÁö</td>
+				<td>ê±°ëž˜ì¤‘ì§€</td>
 				<td><input type="checkbox" id="trade_stop"
 					<%if ("Y".equals(vo.getTrade_stop())) {%> checked <%}%>> <input
 					type="hidden" name="trade_stop"></td>
 			</tr>
 			<tr>
-				<td>°è¾à±â°£</td>
+				<td>ê³„ì•½ê¸°ê°„</td>
 				<td><input type="date" name="contract_period_s"
 					id="contract_period_s" value='<%=vo.getContract_period_s()%>'>
 					~</td>
@@ -226,24 +229,24 @@ dao.close();
 					id="contract_period_e" value='<%=vo.getContract_period_e()%>'></td>
 			</tr>
 			<tr>
-				<td>µî·ÏÁ¤º¸</td>
+				<td>ë“±ë¡ì •ë³´</td>
 				<td><input type="text" name="regi_info_man" id="regi_info_man"
 					value='<%=vo.getRegi_info_man()%>'> <input type="date"
 					name="regi_info_date" id="regi_info_date"
 					value='<%=vo.getRegi_info_date()%>'></td>
-				<td>º¯°æÁ¤º¸</td>
+				<td>ë³€ê²½ì •ë³´</td>
 				<td><input type="text" name="modi_info_man" id="modi_info_man"
 					value='<%=vo.getModi_info_man()%>'> <input type="date"
 					name="modi_info_date" id="modi_info_date"
 					value='<%=vo.getModi_info_date()%>'></td>
 			</tr>
 			<tr>
-				<td>(°Å·¡Ã³ °èÁÂÁ¤º¸)</td>
+				<td>(ê±°ëž˜ì²˜ ê³„ì¢Œì •ë³´)</td>
 			</tr>
 			<tr>
-				<td>»ç¹«¼Ò</td>
-				<td>ÀºÇà</td>
-				<td>°èÁÂ¹øÈ£</td>
+				<td>ì‚¬ë¬´ì†Œ</td>
+				<td>ì€í–‰</td>
+				<td>ê³„ì¢Œë²ˆí˜¸</td>
 			</tr>
 			<tr>
 				<td><input type="text" name="factory" id="factory"
